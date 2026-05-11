@@ -1,859 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="MD Babu Mia, PhD — Assistant Professor at Icahn School of Medicine at Mount Sinai. Specializing in Hematology, Oncology, Biomedical AI, and Single-Cell Multiomics." />
-    <meta name="keywords" content="MD Babu Mia, Biomedical AI, Machine Learning, Hematology, Oncology, Immunology, Single-Cell, Multiomics, Mount Sinai, Clinical AI" />
-    <meta name="author" content="MD Babu Mia" />
-    <meta property="og:title" content="MD Babu Mia, PhD — Biomedical AI & Cancer Researcher" />
-    <meta property="og:description" content="Assistant Professor at Mount Sinai developing AI systems for clinical decision support and biomedical research." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mdbabumiamssm.github.io" />
-    <title>MD Babu Mia, PhD — Biomedical AI Researcher</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-  </head>
-  <body>
-    <div class="background-orb background-orb--one"></div>
-    <div class="background-orb background-orb--two"></div>
-    <div class="background-orb background-orb--three"></div>
-    <div id="particles-container"></div>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BioClin Evidence Studio — Biomedical Evidence Briefs</title>
+<meta name="description" content="Evidence briefs, clinical-trial landscape snapshots, QMSR readiness snapshots, and plain-language patient content for healthtech, medtech, biotech, CRO, and research teams.">
+<style>
+  :root { --ink:#0c1322; --muted:#47516a; --line:#e5e9f2; --brand:#0e7a4f; --brand2:#095f41; --bg:#f7f8fb; --card:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); background:var(--bg); line-height:1.56; }
+  a { color:var(--brand2); }
+  .wrap { width:min(1050px, calc(100% - 32px)); margin:0 auto; }
+  nav { padding:18px 0; border-bottom:1px solid var(--line); background:rgba(247,248,251,.92); position:sticky; top:0; backdrop-filter:blur(10px); z-index:2; }
+  nav .bar { display:flex; justify-content:space-between; gap:18px; align-items:center; }
+  nav strong { letter-spacing:-.01em; }
+  nav a { text-decoration:none; font-weight:700; margin-left:14px; }
+  header { padding:60px 0 34px; }
+  .eyebrow { display:inline-block; padding:6px 12px; border-radius:999px; background:#e6f5ee; color:var(--brand); font-weight:800; font-size:13px; letter-spacing:.04em; text-transform:uppercase; }
+  h1 { font-size:clamp(34px,5.5vw,58px); line-height:1.04; letter-spacing:-.04em; margin:18px 0 14px; }
+  h2 { font-size:28px; letter-spacing:-.02em; margin:0 0 18px; }
+  h3 { margin:0 0 8px; }
+  .lede { font-size:19px; color:var(--muted); max-width:760px; }
+  section { padding:38px 0; border-top:1px solid var(--line); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 10px 26px rgba(12,19,34,.04); }
+  .price { color:var(--brand); font-weight:900; }
+  .cta { display:inline-block; padding:13px 18px; border-radius:12px; background:var(--brand); color:white; font-weight:850; text-decoration:none; margin:8px 8px 0 0; }
+  .cta.secondary { background:white; color:var(--brand); border:1px solid #cfe6dc; }
+  .small { font-size:13.5px; color:var(--muted); }
+  form { display:grid; gap:12px; max-width:620px; background:white; border:1px solid var(--line); border-radius:16px; padding:20px; }
+  label { font-weight:700; font-size:14px; }
+  input, textarea, select { width:100%; font:inherit; padding:11px 12px; border:1px solid #cbd3e2; border-radius:10px; }
+  textarea { min-height:110px; resize:vertical; }
+  button { background:var(--brand); color:white; border:0; border-radius:10px; padding:13px 18px; font-weight:850; cursor:pointer; }
+  article { background:white; border:1px solid var(--line); border-radius:16px; padding:22px; overflow-wrap:anywhere; }
+  article h1 { font-size:32px; }
+  footer { color:var(--muted); padding:34px 0 70px; font-size:14px; }
+  @media (max-width:760px) { nav .bar { align-items:flex-start; flex-direction:column; } nav a { margin:0 12px 0 0; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap bar">
+    <strong>BioClin Evidence Studio</strong>
+    <div>
+      <a href="/index.html#offers">Offers</a>
+      <a href="/latest.html">Latest Digest</a>
+      <a href="/profile.html">Profile</a>
+      <a href="/index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Navigation -->
-    <header class="site-header" id="top">
-      <nav class="nav">
-        <a href="#top" class="logo">
-          <span class="logo__icon">MB</span>
-          <span class="logo__text">MD Babu Mia</span>
-        </a>
-        <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="hamburger"></span>
-        </button>
-        <div class="nav__menu">
-          <div class="nav__links">
-            <a href="#about">About</a>
-            <a href="#research">Research</a>
-            <a href="#projects">Projects</a>
-            <a href="#publications">Publications</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <a class="nav__cta" href="https://github.com/mdbabumiamssm" target="_blank" rel="noreferrer">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-        </div>
-      </nav>
-    </header>
+<header class="wrap">
+  <span class="eyebrow">BioClin Evidence Studio</span>
+  <h1>Source-backed biomedical evidence briefs, on the clock.</h1>
+  <p class="lede">Evidence briefs, clinical-trial landscape snapshots, QMSR readiness snapshots, and plain-language patient content for healthtech, medtech, biotech, CRO, and research teams. 24–72 hour turnaround. Fixed fees. Every claim cited.</p>
+  <a class="cta" href="https://paypal.me/babuudx/250USD" target="_blank" rel="noopener">Start with a $250 brief</a>
+  <a class="cta secondary" href="/digests/2026-05-11.html">Read latest digest</a>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero__content">
-        <div class="hero__badge">
-          <i class="fas fa-microscope"></i>
-          Icahn School of Medicine at Mount Sinai
-        </div>
-        <h1>
-          <span class="hero__greeting">Hello, I'm</span>
-          <span class="hero__name">MD Babu Mia</span>
-          <span class="hero__title-wrapper">
-            <span class="hero__title" id="typed-text"></span>
-            <span class="cursor">|</span>
-          </span>
-        </h1>
-        <p class="hero__description">
-          Assistant Professor developing <strong>production-ready AI systems</strong> for clinical decision support,
-          drug discovery, and single-cell multiomics analysis. Creator of the
-          <em>Universal Skill Definition Language (USDL)</em> — enabling biomedical AI skills that deploy
-          across Claude, ChatGPT, Gemini, and custom model stacks.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#projects">
-            <i class="fas fa-rocket"></i> View My Work
-          </a>
-          <a class="btn btn--ghost" href="#contact">
-            <i class="fas fa-envelope"></i> Get in Touch
-          </a>
-          <a class="btn btn--ghost" href="assets/docs/cv.pdf" target="_blank">
-            <i class="fas fa-file-alt"></i> Download CV
-          </a>
-        </div>
-        <div class="hero__social">
-          <a href="https://github.com/mdbabumiamssm" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/babudx" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://twitter.com/BabuuDx" target="_blank" rel="noreferrer" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://orcid.org/0000-0002-0372-9310" target="_blank" rel="noreferrer" aria-label="ORCID">
-            <i class="fab fa-orcid"></i>
-          </a>
-          <a href="https://www.youtube.com/channel/UC3Jd8iJutfk3p37YNvJhHEw" target="_blank" rel="noreferrer" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://profiles.mountsinai.org/md-babu-mia" target="_blank" rel="noreferrer" aria-label="Mount Sinai Profile">
-            <i class="fas fa-university"></i>
-          </a>
-        </div>
+<main>
+  <section class="wrap" id="offers">
+    <h2>Productized offers</h2>
+    <div class="grid">
+      <div class="card">
+  <h3>Same-Day Evidence Brief</h3>
+  <div class="price">$250 · 24 h</div>
+  <p>2–4 pages on a specific clinical, product, or evidence question. Includes 5–10 sources, limitations, and recommended next action.</p>
+  <a class="cta" href="https://paypal.me/babuudx/250USD" target="_blank" rel="noopener">Buy now</a>
+</div>
+<div class="card">
+  <h3>Clinical-Trial Landscape Snapshot</h3>
+  <div class="price">$500 · 48 h</div>
+  <p>Active, recruiting, and completed trials with sponsor classes, endpoints, geographies, and gap-opportunity notes.</p>
+  <a class="cta" href="https://paypal.me/babuudx/500USD" target="_blank" rel="noopener">Buy now</a>
+</div>
+<div class="card">
+  <h3>QMSR Readiness Snapshot</h3>
+  <div class="price">$500 · 2–5 d</div>
+  <p>Public-source documentation-readiness mapping for FDA QMSR / ISO 13485 areas. Not regulatory or legal sign-off.</p>
+  <a class="cta" href="https://paypal.me/babuudx/500USD" target="_blank" rel="noopener">Buy now</a>
+</div>
+<div class="card">
+  <h3>Patient Education Rewrite</h3>
+  <div class="price">$150 · 24–48 h</div>
+  <p>One patient-facing asset rewritten with plain-language structure, readability notes, and medical-claim risk flags.</p>
+  <a class="cta" href="https://paypal.me/babuudx/150USD" target="_blank" rel="noopener">Buy now</a>
+</div>
+<div class="card">
+  <h3>SBIR / STTR Specific Aims Review</h3>
+  <div class="price">$300 · 48 h–1 wk</div>
+  <p>Reviewer-style critique of significance, innovation, approach, and commercialization logic.</p>
+  <a class="cta" href="https://paypal.me/babuudx/300USD" target="_blank" rel="noopener">Buy now</a>
+</div>
+<div class="card">
+  <h3>Weekly Evidence Monitoring</h3>
+  <div class="price">$750 / month · weekly</div>
+  <p>Weekly brief tracking new publications, clinical trials, FDA activity, and competitor claims.</p>
+  <a class="cta" href="https://paypal.me/babuudx/750USD" target="_blank" rel="noopener">Buy now</a>
+</div>
+    </div>
+    <p class="small">If a button says “Request setup,” add your Stripe Payment Link in <code>payments/payment_links.json</code>.</p>
+  </section>
+
+  <section class="wrap" id="digest">
+    <h2>Daily Biomedical Evidence Digest</h2>
+    <div class="card">
+      <p>Each scheduled run publishes a source-linked digest from PubMed, ClinicalTrials.gov, and FDA/openFDA data.</p>
+      <a class="cta" href="/digests/2026-05-11.html">Open latest digest</a>
+      <a class="cta" href="https://paypal.me/babuudx/19USD" target="_blank" rel="noopener">Subscribe</a>
+    </div>
+  </section>
+
+  <section class="wrap" id="demo">
+    <h2>Public demo</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Example deliverable</h3>
+        <p>A live daily evidence digest generated from PubMed, ClinicalTrials.gov, and FDA/openFDA sources. This demonstrates the style of source-linked monitoring used for custom briefs.</p>
+        <a class="cta secondary" href="/digests/2026-05-11.html">View demo digest</a>
       </div>
-      <div class="hero__visual">
-        <div class="hero__avatar">
-          <div class="avatar-ring"></div>
-          <div class="avatar-ring avatar-ring--delayed"></div>
-          <div class="avatar-placeholder">
-            <i class="fas fa-user-tie"></i>
-          </div>
-        </div>
-        <div class="hero__stats">
-          <div class="mini-stat">
-            <span class="mini-stat__value" data-target="132">0</span>
-            <span class="mini-stat__label">Repositories</span>
-          </div>
-          <div class="mini-stat">
-            <span class="mini-stat__value" data-target="108">0</span>
-            <span class="mini-stat__label">GitHub Stars</span>
-          </div>
-          <div class="mini-stat">
-            <span class="mini-stat__value" data-target="21">0</span>
-            <span class="mini-stat__label">Followers</span>
-          </div>
-        </div>
+      <div class="card">
+        <h3>Starter custom brief</h3>
+        <p>For a paid custom brief, send one specific biomedical, clinical-trial, device, or healthtech question. The deliverable is 2–4 pages with citations, limitations, and next-step notes.</p>
+        <a class="cta" href="https://paypal.me/babuudx/250USD" target="_blank" rel="noopener">Buy starter brief</a>
       </div>
-      <div class="scroll-indicator">
-        <span>Scroll to explore</span>
-        <div class="scroll-arrow"></div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <main>
-      <!-- About Section -->
-      <section class="about" id="about">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-user"></i> About Me</span>
-          <h2>Bridging AI and Biomedicine</h2>
-        </div>
-        <div class="about__content">
-          <div class="about__text">
-            <p>
-              I am an <strong>Assistant Professor</strong> at the <strong>Icahn School of Medicine at Mount Sinai</strong>
-              in New York City, specializing in <strong>Medicine, Hematology, and Medical Oncology</strong>. My work stands at the forefront of translational research, applying cutting-edge artificial intelligence to solve complex biological problems.
-            </p>
-            <p>
-              My research focuses on dissecting the mechanisms of <strong>cancer biology, hematopoiesis, and immunology</strong> using single-cell multiomics and machine learning. By developing <strong>evidence-based AI systems</strong>, I aim to bridge the gap between computational discovery and clinical application, creating tools that are not only statistically rigorous but also interpretable for clinicians.
-            </p>
-            <p>
-              As the architect of the <strong>Universal Skill Definition Language (USDL)</strong>, I am pioneering a standardized framework that allows biomedical AI agents to operate across platforms—scaling scientific analysis from the bench to the bedside.
-            </p>
-            <div class="about__highlights">
-              <div class="highlight-item">
-                <i class="fas fa-dna"></i>
-                <div>
-                  <h4>Biomedical Domain Expert</h4>
-                  <p>Hematology, Oncology, Immunology & Stem Cell Biology</p>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-brain"></i>
-                <div>
-                  <h4>AI Systems Architect</h4>
-                  <p>Clinical Decision Support & Agentic Workflows</p>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-microscope"></i>
-                <div>
-                  <h4>Multiomics Analyst</h4>
-                  <p>Single-cell RNA-seq, Spatial Transcriptomics & Genomics</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="about__card">
-            <div class="info-card">
-              <h3><i class="fas fa-id-card"></i> Quick Facts</h3>
-              <ul class="info-list">
-                <li><strong>Position:</strong> Assistant Professor</li>
-                <li><strong>Institution:</strong> Mount Sinai, NYC</li>
-                <li><strong>Department:</strong> Medicine, Hematology & Oncology</li>
-                <li><strong>Focus:</strong> AI, Cancer Biology, Genomics</li>
-                <li><strong>Email:</strong> md.babu.mia@mssm.edu</li>
-              </ul>
-              <div class="info-card__links">
-                <a href="https://profiles.mountsinai.org/md-babu-mia" target="_blank" class="btn btn--small">
-                  <i class="fas fa-external-link-alt"></i> Mount Sinai Profile
-                </a>
-                <a href="https://orcid.org/0000-0002-0372-9310" target="_blank" class="btn btn--small btn--outline">
-                  <i class="fab fa-orcid"></i> ORCID
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section class="wrap" id="profile">
+    <h2>Professional profile</h2>
+    <div class="card">
+      <p>BioClin Evidence Studio provides biomedical evidence synthesis, clinical-trial intelligence, and medical-content support for qualified teams.</p>
+      <p><strong>Lead:</strong> MD BABU MIA</p>
+      <p class="small"><strong>Credentials/profile:</strong> PHD</p>
+      <p class="small">Research and writing support only. Not medical, legal, or regulatory advice.</p>
+      <a class="cta secondary" href="/profile.html">View profile</a>
+    </div>
+  </section>
 
-      <!-- Research Interests -->
-      <section class="research" id="research">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-search"></i> Research</span>
-          <h2>Research Interests & Focus Areas</h2>
-        </div>
-        <div class="research__grid">
-          <article class="research-card">
-            <div class="research-card__icon">
-              <i class="fas fa-dna"></i>
-            </div>
-            <h3>Cancer Biology & Hematology</h3>
-            <p>
-              Investigating disease mechanisms in leukemia, fibrosis, and inflammation.
-              Focusing on apoptosis, cell cycle regulation, and cellular differentiation in hematopoietic systems.
-            </p>
-            <div class="research-card__tags">
-              <span>Leukemia</span>
-              <span>Immunology</span>
-              <span>Stem Cells</span>
-            </div>
-          </article>
-          <article class="research-card">
-            <div class="research-card__icon">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h3>Clinical AI & Decision Support</h3>
-            <p>
-              Developing AI agents for clinical trial matching and evidence-based recommendations.
-              Systems designed with uncertainty quantification and audit-ready provenance for healthcare.
-            </p>
-            <div class="research-card__tags">
-              <span>TrialGPT</span>
-              <span>EMR Analysis</span>
-              <span>FHIR</span>
-            </div>
-          </article>
-          <article class="research-card">
-            <div class="research-card__icon">
-              <i class="fas fa-pills"></i>
-            </div>
-            <h3>Drug Discovery & Repurposing</h3>
-            <p>
-              AI-powered compound screening and target identification pipelines. Utilizing multi-agent
-              orchestration to accelerate the discovery of therapeutics for complex diseases.
-            </p>
-            <div class="research-card__tags">
-              <span>Target ID</span>
-              <span>Virtual Screening</span>
-              <span>Therapeutics</span>
-            </div>
-          </article>
-          <article class="research-card">
-            <div class="research-card__icon">
-              <i class="fas fa-chart-network"></i>
-            </div>
-            <h3>Single-Cell & Spatial Omics</h3>
-            <p>
-              Complete analysis stacks for scRNA-seq and spatial transcriptomics.
-              Automating cell type annotation and spatial analysis to uncover cellular heterogeneity.
-            </p>
-            <div class="research-card__tags">
-              <span>scRNA-seq</span>
-              <span>Spatial TX</span>
-              <span>scverse</span>
-            </div>
-          </article>
-          <article class="research-card">
-            <div class="research-card__icon">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <h3>LLM Agents & USDL</h3>
-            <p>
-              Pioneering the Universal Skill Definition Language (USDL) to standardize biomedical AI capabilities
-              across LLM platforms (Claude, ChatGPT, Gemini) for reproducible science.
-            </p>
-            <div class="research-card__tags">
-              <span>USDL</span>
-              <span>Multi-Agent</span>
-              <span>Automation</span>
-            </div>
-          </article>
-          <article class="research-card">
-            <div class="research-card__icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3>AI Governance & Safety</h3>
-            <p>
-              Building robust governance frameworks with model registries, drift monitoring,
-              and clinical safety gates to ensure responsible AI deployment in patient care.
-            </p>
-            <div class="research-card__tags">
-              <span>Governance</span>
-              <span>Safety</span>
-              <span>Ethics</span>
-            </div>
-          </article>
-        </div>
-      </section>
+  <section class="wrap" id="contact">
+    <h2>Request a brief</h2>
+    <div class="card">
+      <h3>Fastest path: choose an offer and pay through PayPal</h3>
+      <p>Payment buttons are active. Add a concise scope note in PayPal, then email your scope and receipt to <a href="mailto:drbabumbd@gmail.com">drbabumbd@gmail.com</a>.</p>
+      <a class="cta" href="https://paypal.me/babuudx/250USD" target="_blank" rel="noopener">Pay $250 for starter evidence brief</a>
+      <a class="cta secondary" href="mailto:drbabumbd@gmail.com">Email scope</a>
+      <p class="small">Do not send PHI, patient names, MRNs, charts, passwords, or confidential trade-secret data through PayPal notes.</p>
+    </div>
+  </section>
+</main>
 
-      <!-- Featured Projects -->
-      <section class="projects" id="projects">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-code"></i> Projects</span>
-          <h2>Featured Open Source Work</h2>
-          <p class="section-subtitle">Explore my contributions to biomedical AI and computational biology</p>
-        </div>
-        <div class="projects__grid">
-          <article class="project-card project-card--featured">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <i class="fas fa-brain"></i>
-              </div>
-              <div class="project-card__badges">
-                <span class="badge badge--featured">Featured</span>
-                <span class="badge badge--stars"><i class="fas fa-star"></i> 8</span>
-              </div>
-            </div>
-            <h3>LLMs-Universal-Life-Science-and-Clinical-Skills</h3>
-            <p>
-              A comprehensive platform for biomedical AI skills using the Universal Skill Definition Language (USDL).
-              Enables cross-platform deployment of clinical decision support, drug discovery, and genomics workflows.
-            </p>
-            <div class="project-card__tech">
-              <span>Jupyter Notebook</span>
-              <span>Python</span>
-              <span>YAML</span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://github.com/mdbabumiamssm/LLMs-Universal-Life-Science-and-Clinical-Skills-" target="_blank">
-                <i class="fab fa-github"></i> View Repository
-              </a>
-              <a href="https://github.com/mdbabumiamssm/LLMs-Universal-Life-Science-and-Clinical-Skills-/blob/main/docs/strategy/UNIVERSAL_SKILLS_PLATFORM_STRATEGY.md" target="_blank">
-                <i class="fas fa-book"></i> Documentation
-              </a>
-            </div>
-          </article>
-          <article class="project-card">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <i class="fas fa-microscope"></i>
-              </div>
-              <div class="project-card__badges">
-                <span class="badge badge--stars"><i class="fas fa-star"></i> 2</span>
-              </div>
-            </div>
-            <h3>cellidentifierdx</h3>
-            <p>
-              High-performance Python library for automated cell type annotation in scRNA-seq workflows.
-              Integrates curated marker databases with statistical validation for precise cellular identification.
-            </p>
-            <div class="project-card__tech">
-              <span>Python</span>
-              <span>scRNA-seq</span>
-              <span>ML</span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://github.com/mdbabumiamssm/cellidentifierdx" target="_blank">
-                <i class="fab fa-github"></i> View Repository
-              </a>
-            </div>
-          </article>
-          <article class="project-card">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <i class="fas fa-dna"></i>
-              </div>
-              <div class="project-card__badges">
-                <span class="badge badge--stars"><i class="fas fa-star"></i> 1</span>
-              </div>
-            </div>
-            <h3>DNAdamageclassifierDx</h3>
-            <p>
-              Machine learning framework for classifying DNA damage patterns from genomic data.
-              Utilizes ensemble methods to provide interpretable feature importance and high-accuracy classification.
-            </p>
-            <div class="project-card__tech">
-              <span>Python</span>
-              <span>ML</span>
-              <span>Genomics</span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://github.com/mdbabumiamssm/DNAdamageclassifierDx" target="_blank">
-                <i class="fab fa-github"></i> View Repository
-              </a>
-            </div>
-          </article>
-          <article class="project-card">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <i class="fas fa-database"></i>
-              </div>
-              <div class="project-card__badges">
-                <span class="badge badge--stars"><i class="fas fa-star"></i> 1</span>
-              </div>
-            </div>
-            <h3>ncbi-geo-pubmed-search</h3>
-            <p>
-              Advanced programmatic interface for querying NCBI GEO and PubMed.
-              Streamlines meta-analysis by enabling complex filtering and automated retrieval of biomedical datasets.
-            </p>
-            <div class="project-card__tech">
-              <span>Python</span>
-              <span>API</span>
-              <span>NCBI</span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://github.com/mdbabumiamssm/ncbi-geo-pubmed-search" target="_blank">
-                <i class="fab fa-github"></i> View Repository
-              </a>
-            </div>
-          </article>
-        </div>
-        <div class="projects__cta">
-          <a href="https://github.com/mdbabumiamssm?tab=repositories" target="_blank" class="btn btn--primary">
-            <i class="fab fa-github"></i> View All 132 Repositories
-          </a>
-        </div>
-      </section>
-
-      <!-- Platform Launches (from original) -->
-      <section class="launches" id="launches">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-rocket"></i> Platform</span>
-          <h2>BioMedAI Platform Components</h2>
-          <p class="section-subtitle">Production-ready tools engineered for evidence-first biomedical teams</p>
-        </div>
-        <div class="launch-grid">
-          <article class="launch-card">
-            <div class="launch-card__tag">Data Analysis Skill</div>
-            <h3>Unified Analytics Workbench</h3>
-            <p>
-              A full-stack analytics agent bundling Python (Pandas, NumPy), R, SQL, Tableau, and Power BI so translational
-              teams can jump from exploratory data analysis to executive storytelling without context switching.
-            </p>
-            <ul>
-              <li>Drop-in USDL module for LangChain, AutoGen, Semantic Kernel</li>
-              <li>Embedded data quality gates (missingness, MAD-based outlier checks)</li>
-              <li>Reusable YAML skill definition with citations for every workflow</li>
-            </ul>
-          </article>
-          <article class="launch-card">
-            <div class="launch-card__tag">Clinical Launchpad</div>
-            <h3>TrialGPT + Clinical Notes</h3>
-            <p>
-              Precision trial matching and SOAP note structuring agents that transform EMR exhaust into decisions clinicians
-              can trust. Each recommendation bundles rationale, contraindication flags, and audit-ready provenance.
-            </p>
-            <ul>
-              <li>Optimized for NIH datasets and Mount Sinai clinical protocols</li>
-              <li>Escalation states for insufficient data + uncertainty overlays</li>
-              <li>Plug-and-play with SMART-on-FHIR roadmaps</li>
-            </ul>
-          </article>
-          <article class="launch-card">
-            <div class="launch-card__tag">Research Ecosystems</div>
-            <h3>scverse + Seurat Integration</h3>
-            <p>
-              Complete single-cell analysis stacks cloned locally for rapid STAgent/BioMaster prototyping, including annotated
-              tutorials, benchmarking notebooks, and reproducible pipelines.
-            </p>
-            <ul>
-              <li>Spatial transcriptomics orchestration with STAgent + BioMaster</li>
-              <li>Ready-to-run MCP servers for PubMed & ClinicalTrials retrieval</li>
-              <li>Versioned playbooks for ICP, CRISPR, and cell annotation tasks</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- Publications -->
-      <section class="publications" id="publications">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-file-alt"></i> Publications</span>
-          <h2>Selected Publications</h2>
-          <p class="section-subtitle">Peer-reviewed research in biomedical AI and computational biology</p>
-        </div>
-        <div class="publications__list">
-          <article class="publication-card">
-            <div class="publication-card__year">2024</div>
-            <div class="publication-card__content">
-              <h3>Universal Skill Definition Language for Biomedical LLM Agents</h3>
-              <p class="publication-card__authors">
-                <strong>Mia MB</strong>, et al.
-              </p>
-              <p class="publication-card__venue">
-                <i class="fas fa-book"></i> In Preparation
-              </p>
-              <p class="publication-card__abstract">
-                A standardized framework enabling biomedical AI skills to compile once and deploy across
-                multiple LLM platforms including Claude, ChatGPT, and Gemini.
-              </p>
-              <div class="publication-card__links">
-                <a href="https://github.com/mdbabumiamssm/LLMs-Universal-Life-Science-and-Clinical-Skills-" target="_blank">
-                  <i class="fab fa-github"></i> Code
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="publication-card">
-            <div class="publication-card__year">2024</div>
-            <div class="publication-card__content">
-              <h3>Multi-Agent Systems for Clinical Decision Support</h3>
-              <p class="publication-card__authors">
-                <strong>Mia MB</strong>, et al.
-              </p>
-              <p class="publication-card__venue">
-                <i class="fas fa-book"></i> Mount Sinai AI Group Technical Report
-              </p>
-              <p class="publication-card__abstract">
-                Development of orchestrated AI agents for clinical trial matching, EMR analysis, and
-                evidence-based recommendation generation with governance controls.
-              </p>
-            </div>
-          </article>
-          <article class="publication-card">
-            <div class="publication-card__year">Ongoing</div>
-            <div class="publication-card__content">
-              <h3>Cell Type Identification in Single-Cell RNA Sequencing</h3>
-              <p class="publication-card__authors">
-                <strong>Mia MB</strong>, et al.
-              </p>
-              <p class="publication-card__venue">
-                <i class="fas fa-book"></i> Research in Progress
-              </p>
-              <p class="publication-card__abstract">
-                Machine learning approaches for automated cell type annotation using marker gene databases
-                and ensemble classification methods.
-              </p>
-              <div class="publication-card__links">
-                <a href="https://github.com/mdbabumiamssm/cellidentifierdx" target="_blank">
-                  <i class="fab fa-github"></i> Code
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="publications__cta">
-          <a href="https://orcid.org/0000-0002-0372-9310" target="_blank" class="btn btn--ghost">
-            <i class="fab fa-orcid"></i> View Full Publication List on ORCID
-          </a>
-          <a href="https://scholar.google.com/citations?user=YOURID" target="_blank" class="btn btn--ghost">
-            <i class="fas fa-graduation-cap"></i> Google Scholar
-          </a>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section class="skills" id="skills">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-tools"></i> Skills</span>
-          <h2>Technical Expertise</h2>
-        </div>
-        <div class="skills__container">
-          <div class="skill-category">
-            <h3><i class="fas fa-code"></i> Programming Languages</h3>
-            <div class="skill-bars">
-              <div class="skill-bar">
-                <div class="skill-bar__info">
-                  <span>Python</span>
-                  <span>95%</span>
-                </div>
-                <div class="skill-bar__track">
-                  <div class="skill-bar__fill" data-width="95"></div>
-                </div>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar__info">
-                  <span>R</span>
-                  <span>90%</span>
-                </div>
-                <div class="skill-bar__track">
-                  <div class="skill-bar__fill" data-width="90"></div>
-                </div>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar__info">
-                  <span>SQL</span>
-                  <span>85%</span>
-                </div>
-                <div class="skill-bar__track">
-                  <div class="skill-bar__fill" data-width="85"></div>
-                </div>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar__info">
-                  <span>Bash/Shell</span>
-                  <span>80%</span>
-                </div>
-                <div class="skill-bar__track">
-                  <div class="skill-bar__fill" data-width="80"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">TensorFlow</span>
-              <span class="skill-tag">PyTorch</span>
-              <span class="skill-tag">Scikit-learn</span>
-              <span class="skill-tag">LangChain</span>
-              <span class="skill-tag">Hugging Face</span>
-              <span class="skill-tag">OpenAI API</span>
-              <span class="skill-tag">Claude API</span>
-              <span class="skill-tag">AutoGen</span>
-              <span class="skill-tag">Semantic Kernel</span>
-              <span class="skill-tag">XGBoost</span>
-              <span class="skill-tag">Deep Learning</span>
-              <span class="skill-tag">NLP</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-dna"></i> Bioinformatics</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Scanpy</span>
-              <span class="skill-tag">Seurat</span>
-              <span class="skill-tag">scverse</span>
-              <span class="skill-tag">AnnData</span>
-              <span class="skill-tag">Bioconductor</span>
-              <span class="skill-tag">STAR</span>
-              <span class="skill-tag">CellRanger</span>
-              <span class="skill-tag">GSEA</span>
-              <span class="skill-tag">Spatial TX</span>
-              <span class="skill-tag">Bulk RNA-seq</span>
-              <span class="skill-tag">scRNA-seq</span>
-              <span class="skill-tag">Multi-omics</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-server"></i> Tools & Platforms</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Git/GitHub</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Linux</span>
-              <span class="skill-tag">HPC/Slurm</span>
-              <span class="skill-tag">AWS</span>
-              <span class="skill-tag">Jupyter</span>
-              <span class="skill-tag">VS Code</span>
-              <span class="skill-tag">Tableau</span>
-              <span class="skill-tag">Power BI</span>
-              <span class="skill-tag">FHIR</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experience & Education -->
-      <section class="experience" id="experience">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-briefcase"></i> Experience</span>
-          <h2>Career & Education</h2>
-        </div>
-        <div class="timeline">
-          <article class="timeline__item">
-            <div class="timeline__marker">
-              <i class="fas fa-university"></i>
-            </div>
-            <div class="timeline__content">
-              <span class="timeline__date">Present</span>
-              <h3>Assistant Professor</h3>
-              <p class="timeline__org">Icahn School of Medicine at Mount Sinai</p>
-              <p>
-                Leading research in the Department of Medicine, Hematology, and Medical Oncology.
-                Developing AI-driven solutions for cancer biology, single-cell multiomics, and clinical decision support systems.
-              </p>
-            </div>
-          </article>
-          <article class="timeline__item">
-            <div class="timeline__marker">
-              <i class="fas fa-flask"></i>
-            </div>
-            <div class="timeline__content">
-              <span class="timeline__date">Research</span>
-              <h3>Artificial Intelligence Group</h3>
-              <p class="timeline__org">Mount Sinai Health System</p>
-              <p>
-                Building production-ready clinical AI systems with governance frameworks,
-                evidence-backed workflows, and multi-agent orchestration capabilities.
-              </p>
-            </div>
-          </article>
-          <article class="timeline__item">
-            <div class="timeline__marker">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="timeline__content">
-              <span class="timeline__date">Education</span>
-              <h3>Indiana University</h3>
-              <p class="timeline__org">PhD</p>
-              <p>
-                Doctoral research focusing on Computational Biology and Bioinformatics.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Roadmap (from original, enhanced) -->
-      <section class="roadmap" id="roadmap">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-map"></i> Roadmap</span>
-          <h2>BioMedAI Platform Roadmap</h2>
-        </div>
-        <div class="roadmap__grid">
-          <article class="roadmap-card">
-            <div class="roadmap-card__phase">Phase 1</div>
-            <h3>Trust + Workflow</h3>
-            <p>Clinical report objects, provenance logging, and error-mode UX so every output is chart-ready.</p>
-            <ul>
-              <li>PredictionCard schema with uncertainty + contraindication flags</li>
-              <li>Evidence packs referencing internal docs and guidelines</li>
-              <li>Escalation states ("needs expert review", "insufficient data")</li>
-            </ul>
-            <div class="roadmap-card__status">
-              <span class="status-badge status-badge--active">In Progress</span>
-            </div>
-          </article>
-          <article class="roadmap-card">
-            <div class="roadmap-card__phase">Phase 2</div>
-            <h3>Connectors + Cohorts</h3>
-            <p>Data flows from source systems with validation, cohort builders, and monitoring dashboards.</p>
-            <ul>
-              <li>FHIR + CSV ingestion adapters with unit/ontology normalization</li>
-              <li>Cohort builder with provenance-aware exports</li>
-              <li>Calibration, drift, and subgroup safety monitors</li>
-            </ul>
-            <div class="roadmap-card__status">
-              <span class="status-badge status-badge--planned">Planned</span>
-            </div>
-          </article>
-          <article class="roadmap-card">
-            <div class="roadmap-card__phase">Phase 3</div>
-            <h3>Multi-modal + Knowledge</h3>
-            <p>Document ingestion, knowledge graph services, and plugins for imaging, pathology, and genomics.</p>
-            <ul>
-              <li>Governed retrieval store with citations + redaction</li>
-              <li>Optional biomedical knowledge graph for agents</li>
-              <li>Modular multi-modal adapters (DICOM, omics, notes)</li>
-            </ul>
-            <div class="roadmap-card__status">
-              <span class="status-badge status-badge--future">Future</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="contact" id="contact">
-        <div class="section-header">
-          <span class="eyebrow"><i class="fas fa-envelope"></i> Contact</span>
-          <h2>Let's Connect</h2>
-          <p class="section-subtitle">Interested in collaboration, research opportunities, or just want to chat?</p>
-        </div>
-        <div class="contact__content">
-          <div class="contact__info">
-            <div class="contact-item">
-              <div class="contact-item__icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-item__details">
-                <h4>Email</h4>
-                <a href="mailto:md.babu.mia@mssm.edu">md.babu.mia@mssm.edu</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item__icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-item__details">
-                <h4>Location</h4>
-                <p>Manhattan, New York City, USA</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item__icon">
-                <i class="fas fa-university"></i>
-              </div>
-              <div class="contact-item__details">
-                <h4>Institution</h4>
-                <p>Icahn School of Medicine at Mount Sinai</p>
-              </div>
-            </div>
-          </div>
-          <div class="contact__social">
-            <h4>Connect on Social</h4>
-            <div class="social-grid">
-              <a href="https://github.com/mdbabumiamssm" target="_blank" class="social-card">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-                <small>@mdbabumiamssm</small>
-              </a>
-              <a href="https://linkedin.com/in/babudx" target="_blank" class="social-card">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn</span>
-                <small>in/babudx</small>
-              </a>
-              <a href="https://twitter.com/BabuuDx" target="_blank" class="social-card">
-                <i class="fab fa-twitter"></i>
-                <span>Twitter</span>
-                <small>@BabuuDx</small>
-              </a>
-              <a href="https://orcid.org/0000-0002-0372-9310" target="_blank" class="social-card">
-                <i class="fab fa-orcid"></i>
-                <span>ORCID</span>
-                <small>0000-0002-0372-9310</small>
-              </a>
-              <a href="https://www.youtube.com/channel/UC3Jd8iJutfk3p37YNvJhHEw" target="_blank" class="social-card">
-                <i class="fab fa-youtube"></i>
-                <span>YouTube</span>
-                <small>Channel</small>
-              </a>
-              <a href="https://profiles.mountsinai.org/md-babu-mia" target="_blank" class="social-card">
-                <i class="fas fa-university"></i>
-                <span>Mount Sinai</span>
-                <small>Profile</small>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer__content">
-        <div class="footer__brand">
-          <span class="logo__icon">MB</span>
-          <p>MD Babu Mia, PhD<br>Biomedical AI Researcher</p>
-        </div>
-        <div class="footer__links">
-          <div class="footer__column">
-            <h4>Navigation</h4>
-            <a href="#about">About</a>
-            <a href="#research">Research</a>
-            <a href="#projects">Projects</a>
-            <a href="#publications">Publications</a>
-          </div>
-          <div class="footer__column">
-            <h4>Connect</h4>
-            <a href="https://github.com/mdbabumiamssm" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/babudx" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/BabuuDx" target="_blank">Twitter</a>
-            <a href="mailto:md.babu.mia@mssm.edu">Email</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>&copy; <span id="year"></span> MD Babu Mia. Built with passion for biomedical AI.</p>
-        <a href="#top" class="back-to-top">
-          <i class="fas fa-arrow-up"></i> Back to Top
-        </a>
-      </div>
-    </footer>
-
-    <script type="module" src="assets/js/main.js"></script>
-  </body>
+<footer class="wrap">
+  BioClin Evidence Studio · Research and writing support · Not medical, legal, or regulatory advice. © 2026
+</footer>
+</body>
 </html>
