@@ -393,3 +393,157 @@ console.log(`
 'color: #9966ff; font-size: 14px;',
 'color: #888; font-size: 12px;'
 );
+
+// ============================================
+// Live GitHub Sync
+// Keeps hero stats and the Projects grid in sync with github.com on every
+// page load. Pure client-side: no build step, no automation, nothing that
+// can overwrite the site. If the API is unreachable or rate-limited, the
+// static fallback content already in the HTML is left untouched.
+// ============================================
+const GH_USER = 'mdbabumiamssm';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initGitHubSync();
+});
+
+async function initGitHubSync() {
+  try {
+    const [user, repos] = await Promise.all([
+      ghFetch(`https://api.github.com/users/${GH_USER}`),
+      fetchAllRepos(GH_USER),
+    ]);
+    updateHeroStats(user, repos);
+    renderProjects(repos);
+    updateRepoCount(user.public_repos);
+  } catch (err) {
+    console.warn('GitHub live sync unavailable; keeping cached content.', err);
+  }
+}
+
+function ghFetch(url) {
+  return fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(res => {
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      return res.json();
+    });
+}
+
+async function fetchAllRepos(user) {
+  let page = 1;
+  let all = [];
+  let batch;
+  do {
+    batch = await ghFetch(
+      `https://api.github.com/users/${user}/repos?per_page=100&type=owner&sort=pushed&page=${page}`
+    );
+    all = all.concat(batch);
+    page += 1;
+  } while (batch.length === 100 && page <= 3);
+  return all;
+}
+
+function updateHeroStats(user, repos) {
+  const stars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+  setStatByLabel('repositories', user.public_repos);
+  setStatByLabel('github stars', stars);
+  setStatByLabel('followers', user.followers);
+}
+
+function setStatByLabel(label, value) {
+  if (value == null) return;
+  document.querySelectorAll('.mini-stat').forEach(stat => {
+    const lbl = stat.querySelector('.mini-stat__label');
+    const val = stat.querySelector('.mini-stat__value');
+    if (lbl && val && lbl.textContent.trim().toLowerCase() === label) {
+      val.dataset.target = value;
+      animateCounter(val, value);
+    }
+  });
+}
+
+function renderProjects(repos) {
+  const grid = document.querySelector('.projects__grid');
+  if (!grid) return;
+  const featured = repos
+    .filter(r => !r.fork && !r.archived && !/\.github\.io$/.test(r.name))
+    .sort((a, b) =>
+      (b.stargazers_count - a.stargazers_count) ||
+      (new Date(b.pushed_at) - new Date(a.pushed_at))
+    )
+    .slice(0, 6);
+  if (!featured.length) return; // keep static fallback cards
+  grid.innerHTML = featured.map((repo, i) => projectCard(repo, i === 0)).join('');
+
+  const subtitle = document.querySelector('.projects .section-subtitle');
+  if (subtitle) subtitle.textContent = 'Top repositories, synced live from GitHub';
+}
+
+function projectCard(repo, isFeatured) {
+  const tech = [repo.language, ...(repo.topics || [])].filter(Boolean).slice(0, 3);
+  const desc = repo.description || 'Open-source project by MD Babu Mia, PhD.';
+  const badges = [
+    isFeatured ? '<span class="badge badge--featured">Featured</span>' : '',
+    repo.stargazers_count > 0
+      ? `<span class="badge badge--stars"><i class="fas fa-star"></i> ${repo.stargazers_count}</span>`
+      : '',
+  ].join('');
+  const techTags = tech.map(t => `<span>${escapeHtml(t)}</span>`).join('') +
+    `<span><i class="fas fa-clock"></i> ${relativeTime(repo.pushed_at)}</span>`;
+  const homepage = repo.homepage
+    ? `<a href="${encodeURI(repo.homepage)}" target="_blank" rel="noreferrer"><i class="fas fa-external-link-alt"></i> Live</a>`
+    : '';
+  return `
+          <article class="project-card${isFeatured ? ' project-card--featured' : ''}">
+            <div class="project-card__header">
+              <div class="project-card__icon"><i class="${languageIcon(repo.language)}"></i></div>
+              <div class="project-card__badges">${badges}</div>
+            </div>
+            <h3>${escapeHtml(repo.name)}</h3>
+            <p>${escapeHtml(desc)}</p>
+            <div class="project-card__tech">${techTags}</div>
+            <div class="project-card__links">
+              <a href="${repo.html_url}" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> View Repository</a>
+              ${homepage}
+            </div>
+          </article>`;
+}
+
+function updateRepoCount(count) {
+  if (!count) return;
+  const cta = document.querySelector('.projects__cta .btn');
+  if (cta) cta.innerHTML = `<i class="fab fa-github"></i> View All ${count} Repositories`;
+}
+
+function languageIcon(lang) {
+  const map = {
+    Python: 'fab fa-python',
+    'Jupyter Notebook': 'fas fa-book-open',
+    JavaScript: 'fab fa-js',
+    TypeScript: 'fab fa-js',
+    HTML: 'fab fa-html5',
+    CSS: 'fab fa-css3-alt',
+    Shell: 'fas fa-terminal',
+    Rust: 'fas fa-gears',
+    R: 'fas fa-chart-line',
+    Mermaid: 'fas fa-diagram-project',
+  };
+  return map[lang] || 'fas fa-code-branch';
+}
+
+function relativeTime(iso) {
+  if (!iso) return '';
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+  if (days <= 0) return 'updated today';
+  if (days === 1) return 'updated yesterday';
+  if (days < 30) return `updated ${days}d ago`;
+  const months = Math.floor(days / 30);
+  if (months < 12) return `updated ${months}mo ago`;
+  return `updated ${Math.floor(months / 12)}y ago`;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+  );
+}
