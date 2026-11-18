@@ -37,8 +37,8 @@ function initTypingEffect() {
   if (!typedElement) return;
 
   const titles = [
+    'Founder & CEO, BioMedsAI',
     'Biomedical AI Researcher',
-    'Assistant Professor',
     'Machine Learning Engineer',
     'Single-Cell Genomics Expert',
     'Clinical AI Developer',
@@ -385,7 +385,7 @@ function throttle(func, limit = 100) {
 // ============================================
 console.log(`
 %c MD Babu Mia - Portfolio
-%c Biomedical AI Researcher | Mount Sinai
+%c Founder & CEO, BioMedsAI | https://biomedsai.com
 %c https://github.com/mdbabumiamssm
 
 `,

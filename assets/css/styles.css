@@ -1706,3 +1706,24 @@ section {
     background: none;
   }
 }
+
+/* Links to BioMedsAI inside running text */
+.hero__badge a,
+.hero__description a,
+.about__text a,
+.info-list a,
+.timeline__org a,
+.footer__brand a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(77, 246, 255, 0.35);
+}
+
+.hero__badge a:hover,
+.hero__description a:hover,
+.about__text a:hover,
+.info-list a:hover,
+.timeline__org a:hover,
+.footer__brand a:hover {
+  border-bottom-color: var(--accent);
+}
